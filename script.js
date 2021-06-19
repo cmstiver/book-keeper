@@ -21,13 +21,13 @@ function createRow() {
   tableContainer.prepend(row);
   myLibrary.forEach(book => {
     let div = document.querySelector('.row')
-    
+    book.read ? book.read = 'Completed' : book.read = 'Not Completed'
     div.innerHTML = div.innerHTML + `
       <div class='row'>
       <div class='data'>Title: ${book.title}</div>
       <div class='data'>Author: ${book.author}</div>
       <div class='data'>Pages: ${book.pages}</div>
-      <div class='data'>Completed?: ${book.read}</div>
+      <div class='data'>${book.read}</div>
       </div>
       `
   })
