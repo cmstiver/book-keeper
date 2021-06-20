@@ -20,6 +20,7 @@ function addBookToLibrary() {
   let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked)
   myLibrary.unshift(newBook)
   removeAllChildNodes(bookContainer)
+  addToStorage()
   makeCards()
 }
 
@@ -62,6 +63,7 @@ function removeBook(elem) {
   id = id.replace('book','')
   myLibrary.splice(id-1, 1)
   removeAllChildNodes(bookContainer)
+  addToStorage()
   makeCards()
 }
 function readBook(elem) {
@@ -72,11 +74,24 @@ function readBook(elem) {
   } else {
     myLibrary[id-1].read = 'Completed'
   }
+  addToStorage()
   removeAllChildNodes(bookContainer)
   makeCards()
 }
 
+function addToStorage() {
+  localStorage.setItem("myLibraryString", JSON.stringify(myLibrary));
+}
 
+function retrieveStorage() {
+  let retrievedData = localStorage.getItem("myLibraryString");
+  myLibrary = JSON.parse(retrievedData);
+}
+
+if (localStorage.length != 0) {
+  retrieveStorage()
+}
+addToStorage()
 makeCards()
 
 const bookContainer = document.getElementById("card-container")
@@ -86,6 +101,3 @@ const bookPages = document.getElementById('bookPages')
 const bookRead = document.getElementById('bookRead')
 const submitButton = document.getElementById("submit")
 submitButton.addEventListener('click', addBookToLibrary)
-
-
-
