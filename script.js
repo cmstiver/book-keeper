@@ -94,7 +94,7 @@ function retrieveStorage() {
   }
 }
 
-
+//hi how ya doing
 retrieveStorage()
 addToStorage()
 makeCards()
