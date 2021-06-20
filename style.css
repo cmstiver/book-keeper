@@ -10,10 +10,19 @@ body{
 
 }
 .card {
+    font-size: larger;
+    word-break: break-word;
     background-color: coral;
-    height: 350px;
+    height: 300px;
     width: 250px;
     margin-top: 30px;
+    border-radius: 5%;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    border: black 3px solid;
+    padding-top: 50px;
+    grid-template-rows: 80px 120px 50px 50px;
 }
 .completed {
     background-color: greenyellow;
