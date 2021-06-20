@@ -9,12 +9,18 @@
 </head>
 <body>
     <div id="sidenav">
+        <div style="background-color: #659DBD; padding: 20px; font-size: larger; border-radius: 5%; border: black solid 5px;">The Book Keeper</div>
+        <p style="margin-bottom: 3px;">Book Title:</p>
         <input id="bookTitle" type="text">
+        <p style="margin-bottom: 3px;">Book Author:</p>
         <input id="bookAuthor" type="text">
+        <p style="margin-bottom: 3px;">Book Pages:</p>
         <input id="bookPages" type="text">
-        <div>Completed?</div>
-        <input id="bookRead" type="checkbox">
-        <button id="submit">Submit</button>
+        <div style="display: flex; margin-top: 15px;">
+            <div style="margin-right: 10px;">Completed?</div>
+            <input id="bookRead" type="checkbox">
+        </div>
+        <button id="submit" class="button" style="margin-top: 15px;">Submit</button>
     </div>
     <div id="card-container"></div>
 </body>

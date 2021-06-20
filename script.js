@@ -31,19 +31,20 @@ function makeCards() {
       book.read = book.read ? 'Completed' : 'Not Completed'
     }
     if (book.read == 'Completed' || book.read == true) {
-      readbutton = `<button id="readbutton" class="completed" onClick="readBook(this)">${book.read}</button>`
+      readbutton = `<button id="readbutton" class="completed button" onClick="readBook(this)">${book.read}</button>`
       } else {
-      readbutton = `<button id="readbutton" class="notcompleted" onClick="readBook(this)">${book.read}</button>`
+      readbutton = `<button id="readbutton" class="notcompleted button" onClick="readBook(this)">${book.read}</button>`
       }
     let div = document.querySelector('#card-container')
     div.innerHTML = div.innerHTML + `
       <div id="book${book.num}" class = "card">
       <div>${book.title}</div>
-      <div>Author: ${book.author}</div>
+      <div>Author:</div>
+      <div>${book.author}</div>
       <div>Pages: ${book.pages}</div>
       <div class='buttons'>`
       + readbutton +
-      `<button onClick="removeBook(this)">Delete</button>
+      `<button class="button" onClick="removeBook(this)">Delete</button>
       </div>
     `
   })
