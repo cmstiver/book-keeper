@@ -1,0 +1,13 @@
+body{
+    background-color: cadetblue;
+}
+#card-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.card {
+    background-color: coral;
+    height: 350px;
+    width: 250px;
+    margin-top: 30px;
+}
