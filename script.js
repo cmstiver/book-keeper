@@ -3,7 +3,7 @@ let myLibrary = [
     title: 'Hitchhiker\'s Guide to the Galaxy',
     author: 'Douglas Adams',
     pages: '224',
-    read: true,
+    read: false,
   }
 ];
 
@@ -30,19 +30,22 @@ function makeCards() {
     if (typeof(book.read) == 'boolean'){
       book.read = book.read ? 'Completed' : 'Not Completed'
     }
+    if (book.read == 'Completed' || book.read == true) {
+      readbutton = `<button id="readbutton" class="completed" onClick="readBook(this)">${book.read}</button>`
+      } else {
+      readbutton = `<button id="readbutton" class="notcompleted" onClick="readBook(this)">${book.read}</button>`
+      }
     let div = document.querySelector('#card-container')
     div.innerHTML = div.innerHTML + `
       <div id="book${book.num}" class = "card">
       <div>${book.title}</div>
       <div>Author: ${book.author}</div>
       <div>Pages: ${book.pages}</div>
-      <div>${book.read}</div>
-      <div class='buttons'>
-          <button>Edit</button>
-          <button onClick="checkId(this)">Delete</button>
+      <div class='buttons'>`
+      + readbutton +
+      `<button onClick="removeBook(this)">Delete</button>
       </div>
     `
-
   })
   bookCount = 0
 }
@@ -53,16 +56,25 @@ function removeAllChildNodes(parent) {
   }
 }
 
-function checkId(elem) {
-  removeBook(elem.parentNode.parentNode.id);
-}
-
-function removeBook(id) {
+function removeBook(elem) {
+  id = elem.parentNode.parentNode.id
   id = id.replace('book','')
   myLibrary.splice(id-1, 1)
   removeAllChildNodes(bookContainer)
   makeCards()
 }
+function readBook(elem) {
+  id = elem.parentNode.parentNode.id
+  id = id.replace('book','')
+  if (myLibrary[id-1].read == 'Completed') {
+    myLibrary[id-1].read = 'Not Completed'
+  } else {
+    myLibrary[id-1].read = 'Completed'
+  }
+  removeAllChildNodes(bookContainer)
+  makeCards()
+}
+
 
 makeCards()
 
