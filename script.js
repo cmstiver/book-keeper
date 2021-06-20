@@ -21,6 +21,10 @@ function addBookToLibrary() {
   myLibrary.unshift(newBook)
   removeAllChildNodes(bookContainer)
   addToStorage()
+  bookTitle.value = ""
+  bookAuthor.value = ""
+  bookPages.value = ""
+  bookRead.value = ""
   makeCards()
 }
 
@@ -84,13 +88,14 @@ function addToStorage() {
 }
 
 function retrieveStorage() {
-  let retrievedData = localStorage.getItem("myLibraryString");
-  myLibrary = JSON.parse(retrievedData);
+  if (localStorage.length != 0) {
+    let retrievedData = localStorage.getItem("myLibraryString");
+    myLibrary = JSON.parse(retrievedData);
+  }
 }
 
-if (localStorage.length != 0) {
-  retrieveStorage()
-}
+
+retrieveStorage()
 addToStorage()
 makeCards()
 
