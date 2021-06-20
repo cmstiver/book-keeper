@@ -1,6 +1,15 @@
-let myLibrary = [];
+let myLibrary = [
+  {
+    title: 'Hitchhiker\'s Guide to the Galaxy',
+    author: 'Douglas Adams',
+    pages: '224',
+    read: true,
+  }
+];
 
-function Book(title, author, pages, read) {
+let bookCount = 0
+
+function Book(title, author, pages, read, num) {
   this.title = title
   this.author = author
   this.pages = pages
@@ -16,20 +25,26 @@ function addBookToLibrary() {
 
 function makeCards() {
   myLibrary.forEach((book) => {
-    book.read = book.read ? 'Completed' : 'Not Completed'
+    bookCount++
+    book.num = bookCount
+    if (typeof(book.read) == 'boolean'){
+      book.read = book.read ? 'Completed' : 'Not Completed'
+    }
     let div = document.querySelector('#card-container')
     div.innerHTML = div.innerHTML + `
-      <div class = "card">
+      <div id="book${book.num}" class = "card">
       <div>${book.title}</div>
       <div>Author: ${book.author}</div>
       <div>Pages: ${book.pages}</div>
       <div>${book.read}</div>
       <div class='buttons'>
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick="checkId(this)">Delete</button>
       </div>
     `
+
   })
+  bookCount = 0
 }
 
 function removeAllChildNodes(parent) {
@@ -38,9 +53,19 @@ function removeAllChildNodes(parent) {
   }
 }
 
+function checkId(elem) {
+  removeBook(elem.parentNode.parentNode.id);
+}
+
+function removeBook(id) {
+  id = id.replace('book','')
+  myLibrary.splice(id-1, 1)
+  removeAllChildNodes(bookContainer)
+  makeCards()
+}
+
 makeCards()
 
-//makes book input
 const bookContainer = document.getElementById("card-container")
 const bookTitle = document.getElementById('bookTitle')
 const bookAuthor = document.getElementById('bookAuthor')
