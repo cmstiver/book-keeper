@@ -9,18 +9,20 @@
 </head>
 <body>
     <div id="sidenav">
-        <div style="background-color: #659DBD; padding: 20px; font-size: larger; border-radius: 5%; border: black solid 5px; color: black;">The Book Keeper</div>
-        <p style="margin-bottom: 3px;">Book Title:</p>
-        <input id="bookTitle" class = "inputbox" type="text">
-        <p style="margin-bottom: 3px;">Book Author:</p>
-        <input id="bookAuthor" class = "inputbox" type="text">
-        <p style="margin-bottom: 3px;">Book Pages:</p>
-        <input id="bookPages" class = "inputbox" type="text">
-        <div style="display: flex; margin-top: 15px;">
-            <div style="margin-right: 10px;">Completed?</div>
-            <input id="bookRead" type="checkbox">
-        </div>
-        <button id="submit" class="button" style="margin-top: 15px;">Submit</button>
+        <form>
+            <div style="background-color: #659DBD; padding: 20px; font-size: larger; border-radius: 5%; border: black solid 5px; color: black;">The Book Keeper</div>
+            <p style="margin-bottom: 3px;">Book Title:</p>
+            <input id="bookTitle" class = "inputbox" type="text" required>
+            <p style="margin-bottom: 3px;">Book Author:</p>
+            <input id="bookAuthor" class = "inputbox" type="text" required>
+            <p style="margin-bottom: 3px;">Book Pages:</p>
+            <input id="bookPages" class = "inputbox" type="text" required>
+            <div style="display: flex; margin-top: 15px;">
+                <div style="margin-right: 10px;">Completed?</div>
+                <input id="bookRead" type="checkbox">
+            </div>
+            <button id="submit" class="button" style="margin-top: 15px;">Submit</button>
+        </form>
     </div>
     <div id="card-container"></div>
 </body>

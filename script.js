@@ -17,6 +17,9 @@ function Book(title, author, pages, read, num) {
 }
 
 function addBookToLibrary() {
+  if (!validateForm()) {
+    return
+  }
   let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked)
   myLibrary.unshift(newBook)
   removeAllChildNodes(bookContainer)
@@ -91,6 +94,12 @@ function retrieveStorage() {
   if (localStorage.length != 0) {
     let retrievedData = localStorage.getItem("myLibraryString");
     myLibrary = JSON.parse(retrievedData);
+  }
+}
+
+function validateForm() {
+  if (bookTitle.value === "" || bookAuthor.value === "" || bookAuthor.value === "" || bookPages === "") {
+    return false
   }
 }
 
