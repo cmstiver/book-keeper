@@ -17,9 +17,6 @@ function Book(title, author, pages, read, num) {
 }
 
 function addBookToLibrary() {
-  if (!validateForm()) {
-    return
-  }
   let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked)
   myLibrary.unshift(newBook)
   removeAllChildNodes(bookContainer)
