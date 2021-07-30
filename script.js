@@ -97,12 +97,6 @@ function retrieveStorage() {
   }
 }
 
-function validateForm() {
-  if (bookTitle.value === "" || bookAuthor.value === "" || bookAuthor.value === "" || bookPages === "") {
-    return false
-  }
-}
-
 //hi how ya doing
 retrieveStorage()
 addToStorage()
