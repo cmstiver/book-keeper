@@ -88,13 +88,12 @@ function addToStorage() {
 }
 
 function retrieveStorage() {
-  if (localStorage.length != 0) {
+  if (localStorage.myLibraryString != null) {
     let retrievedData = localStorage.getItem("myLibraryString");
     myLibrary = JSON.parse(retrievedData);
   }
 }
 
-//hi how ya doing
 retrieveStorage()
 addToStorage()
 makeCards()
